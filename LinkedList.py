@@ -21,5 +21,22 @@ class LinkedList:
       self.head = newNode
     
 
+  def traverse(self):
 
+    temp = self.head
+    if temp is None:
+      print("Empty LinkedList!!!")
+      
+    
+    else:
+      while temp:
+        print(temp.data, end="-->")
+        temp = temp.next
+
+L1 = LinkedList()
+L1.insert(15)
+L1.insert(25)
+L1.insert(70)
+L1.insert(90)
+L1.traverse()
     
