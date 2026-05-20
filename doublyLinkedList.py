@@ -2,22 +2,43 @@ class Node:
   def __init__(self,data):
     self.data = data
     self.next = None
-    self.previous = None
+    self.prev = None
 
-class LinkedList:
+class DoublyLinkedList:
   def __init__(self):
     self.head = None
-    self.tail = None
+
+  def append(self,data):
+    new_node = Node(data)
+
+    curr = self.head
+
+    if curr == None:
+      self.head = new_node
+      return
     
-  def add_to_head(self, new_value):
-    new_head = Node(new_value)
-    current_head = self.head_node
+    while curr.next:
+      curr = curr.next
 
-    if current_head != None:
-      current_head.set_prev_node(new_head)
-      new_head.set_next_node(current_head)
+    curr.next = new_node
+    new_node.prev =curr
+  
+  def display(self):
+    temp = self.head
+    if temp is None:
+      print("List is empty")
+      return
+    while temp:
+      print(temp.data,end="-->")
+      temp = temp.next
+    
+    print("None")
+    
 
-    self.head_node = new_head
+L1 = DoublyLinkedList()
+L1.append(2)
+L1.append(3)
+L1.append(4)
+L1.display()
 
-    if self.tail_node == None:
-      self.tail_node = new_head
+print(L1.head.data)
